@@ -8,10 +8,12 @@ public class Level : MonoBehaviour
 
     // cached reference
     SceneLoader sceneLoader;
+    GameStatus gameStatus;
 
     void Start()
     {
         sceneLoader = FindObjectOfType<SceneLoader>();
+        gameStatus = FindObjectOfType<GameStatus>();
     }
 
     public void CountBreakableBlock()
@@ -22,6 +24,7 @@ public class Level : MonoBehaviour
     public void BlockDestroyed()
     {
         breakableBlocks--;
+        gameStatus.AddToScore();
         if (breakableBlocks <= 0)
         {
             sceneLoader.LoadNextScene();
