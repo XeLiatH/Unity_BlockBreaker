@@ -8,12 +8,12 @@ public class Level : MonoBehaviour
 
     // cached reference
     SceneLoader sceneLoader;
-    GameStatus gameStatus;
+    GameSession gameStatus;
 
     void Start()
     {
         sceneLoader = FindObjectOfType<SceneLoader>();
-        gameStatus = FindObjectOfType<GameStatus>();
+        gameStatus = FindObjectOfType<GameSession>();
     }
 
     public void CountBreakableBlock()

@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    GameSession gameStatus;
+
+    void Start()
+    {
+        gameStatus = FindObjectOfType<GameSession>();
+    }
+
     public void LoadNextScene()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -13,6 +20,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadStartScene()
     {
+        gameStatus.ResetGame();
         SceneManager.LoadScene(0);
     }
 
