@@ -11,19 +11,19 @@ public class Ball : MonoBehaviour
 
     // state
     Vector2 paddleToBallVector;
-    bool isBallLaunched;
+    bool hasGameStarted;
 
     // Start is called before the first frame update
     void Start()
     {
-        isBallLaunched = false;
+        hasGameStarted = false;
         paddleToBallVector = transform.position - paddle1.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isBallLaunched)
+        if (!hasGameStarted)
         {
             LockBallToPaddle();
             LaunchOnMouseClick();
@@ -40,8 +40,16 @@ public class Ball : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            isBallLaunched = true;
+            hasGameStarted = true;
             GetComponent<Rigidbody2D>().velocity = new Vector2(xPush, yPush);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (hasGameStarted)
+        {
+            GetComponent<AudioSource>().Play();
         }
     }
 }
