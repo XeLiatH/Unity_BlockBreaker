@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] int breakableBlocks; // serialized for debugging purposes
+    [SerializeField] int blocks; // serialized for debugging purposes
 
     // cached reference
     SceneLoader sceneLoader;
@@ -16,16 +16,16 @@ public class Level : MonoBehaviour
         gameStatus = FindObjectOfType<GameSession>();
     }
 
-    public void CountBreakableBlock()
+    public void CountBlocks()
     {
-        breakableBlocks++;
+        blocks++;
     }
 
     public void BlockDestroyed()
     {
-        breakableBlocks--;
+        blocks--;
         gameStatus.AddToScore();
-        if (breakableBlocks <= 0)
+        if (blocks <= 0)
         {
             sceneLoader.LoadNextScene();
         }
