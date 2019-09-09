@@ -29,8 +29,9 @@ public class Block : MonoBehaviour
 
     private void HandleHit()
     {
+        int maxHits = hitSprites.Length + 1;
         timesHit++;
-        if (timesHit >= hitSprites.Length)
+        if (timesHit >= maxHits)
         {
             DestroyBlock();
         }
