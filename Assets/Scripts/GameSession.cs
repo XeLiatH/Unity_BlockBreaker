@@ -26,7 +26,7 @@ public class GameSession : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-
+    
     void Start()
     {
         UpdateScore();
@@ -34,6 +34,7 @@ public class GameSession : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+
     {
         Time.timeScale = gameSpeed;
         UpdateScore();
@@ -41,7 +42,7 @@ public class GameSession : MonoBehaviour
 
     private void UpdateScore()
     {
-        scoreText.text = currentScore.ToString();
+        this.scoreText.text = currentScore.ToString();
     }
 
     public void AddToScore()
